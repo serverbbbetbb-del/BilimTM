@@ -4,211 +4,289 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AgoshMC | Minecraft Domen</title>
+<title>BilimTM — Türkmenistan Eğitim ve AI</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
 }
 
-body {
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    color: white;
+body{
+    background:#071a2d;
+    color:white;
+}
+
+header{
+    background:linear-gradient(135deg,#063b63,#008f9c);
+    padding:18px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 4px 20px #0006;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#63f3ed;
+}
+
+nav{
+    display:flex;
+    gap:10px;
+}
+
+nav button{
+    border:0;
+    background:#ffffff18;
+    color:white;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+nav button:hover{
+    background:#ffffff30;
+}
+
+.hero{
+    padding:70px 6%;
+    text-align:center;
     background:
-        radial-gradient(circle at 20% 0%, #087f88 0, transparent 35%),
-        linear-gradient(135deg, #02131f, #063c49, #011018);
+    radial-gradient(circle at top,#00a9b522,transparent 40%),
+    #071a2d;
 }
 
-header {
-    padding: 18px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,15,25,.8);
-    border-bottom: 1px solid #1b7e86;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+.hero h1{
+    font-size:45px;
+    margin-bottom:15px;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 22px;
-    font-weight: 900;
-    color: #55f4e4;
+.hero h1 span{
+    color:#4de4df;
 }
 
-.block {
-    width: 34px;
-    height: 34px;
-    background: #159da6;
-    border: 3px solid #55f4e4;
-    box-shadow: 4px 4px #03444e;
+.hero p{
+    color:#b9d6df;
+    font-size:18px;
+    max-width:700px;
+    margin:auto;
 }
 
-.login {
-    border: 0;
-    padding: 11px 17px;
-    border-radius: 10px;
-    background: white;
-    color: #222;
-    font-weight: bold;
-    cursor: pointer;
+.search{
+    margin:30px auto 0;
+    max-width:650px;
+    display:flex;
 }
 
-.container {
-    width: min(950px, 92%);
-    margin: auto;
+.search input{
+    flex:1;
+    padding:16px;
+    border:0;
+    outline:none;
+    border-radius:12px 0 0 12px;
+    font-size:16px;
 }
 
-.hero {
-    text-align: center;
-    padding: 60px 10px 30px;
+.search button{
+    border:0;
+    background:#00a9a5;
+    color:white;
+    padding:0 25px;
+    border-radius:0 12px 12px 0;
+    cursor:pointer;
 }
 
-.flag {
-    font-size: 38px;
+.container{
+    padding:35px 6%;
 }
 
-h1 {
-    margin-top: 10px;
-    font-size: clamp(35px, 7vw, 65px);
-    color: #55f4e4;
-    text-shadow: 4px 4px #03444e;
+.title{
+    font-size:28px;
+    margin-bottom:20px;
 }
 
-.hero p {
-    margin-top: 12px;
-    color: #b8dce0;
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:18px;
 }
 
-.card {
-    margin: 25px auto;
-    padding: 28px;
-    max-width: 700px;
-    background: rgba(2,28,40,.94);
-    border: 1px solid #167984;
-    border-radius: 18px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+.card{
+    background:#0d2941;
+    border:1px solid #ffffff12;
+    border-radius:17px;
+    padding:22px;
+    transition:.2s;
+    cursor:pointer;
 }
 
-h2 {
-    color: #55f4e4;
-    margin-bottom: 20px;
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#3ddbd5;
 }
 
-label {
-    display: block;
-    margin: 16px 0 8px;
-    font-weight: bold;
-    color: #d1eeee;
+.icon{
+    font-size:38px;
+    margin-bottom:12px;
 }
 
-input,
-select {
-    width: 100%;
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid #1b7780;
-    background: #031923;
-    color: white;
-    outline: none;
-    font-size: 15px;
+.card h3{
+    margin-bottom:8px;
 }
 
-input:focus,
-select:focus {
-    border-color: #55f4e4;
+.card p{
+    color:#a9c5d0;
+    font-size:14px;
 }
 
-.preview {
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 9px;
-    background: #01131b;
-    color: #55f4e4;
-    font-family: monospace;
+.section{
+    display:none;
 }
 
-.create {
-    width: 100%;
-    margin-top: 22px;
-    padding: 15px;
-    border: 0;
-    border-radius: 11px;
-    background: linear-gradient(135deg,#55f4e4,#18abb5);
-    color: #012027;
-    font-weight: 900;
-    font-size: 16px;
-    cursor: pointer;
+.section.active{
+    display:block;
 }
 
-.create:hover {
-    transform: translateY(-2px);
+.ai-box{
+    max-width:850px;
+    margin:auto;
+    background:#0d2941;
+    border-radius:18px;
+    padding:20px;
 }
 
-.domain-list {
-    margin: 50px auto;
+.messages{
+    height:350px;
+    overflow-y:auto;
+    background:#071a2d;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
 }
 
-.domain {
-    padding: 17px;
-    margin: 10px 0;
-    background: rgba(2,28,40,.9);
-    border: 1px solid #145b63;
-    border-radius: 12px;
+.message{
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:10px;
+    max-width:80%;
 }
 
-.domain-name {
-    color: #55f4e4;
-    font-family: monospace;
-    font-size: 17px;
+.user{
+    background:#087d82;
+    margin-left:auto;
 }
 
-.domain-ip {
-    margin-top: 6px;
-    color: #91b7bc;
-    font-size: 13px;
+.ai{
+    background:#183a53;
 }
 
-.status {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 5px 9px;
-    border-radius: 6px;
-    background: #084d43;
-    color: #66ffe8;
-    font-size: 12px;
+.ai-input{
+    display:flex;
+    gap:8px;
 }
 
-footer {
-    text-align: center;
-    padding: 35px 10px;
-    color: #8db7bb;
+.ai-input input{
+    flex:1;
+    padding:14px;
+    border:0;
+    border-radius:10px;
+    outline:none;
 }
 
-@media(max-width:600px) {
+.ai-input button{
+    border:0;
+    background:#00aaa5;
+    color:white;
+    padding:0 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
 
-    header {
-        padding: 14px 4%;
+.books{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.book{
+    background:#0d2941;
+    padding:20px;
+    border-radius:15px;
+}
+
+.book button{
+    margin-top:15px;
+    padding:9px 13px;
+    border:0;
+    background:#00a9a5;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.image-box{
+    max-width:700px;
+    margin:auto;
+    background:#0d2941;
+    padding:25px;
+    border-radius:18px;
+}
+
+.image-box textarea{
+    width:100%;
+    height:120px;
+    resize:none;
+    padding:15px;
+    border:0;
+    border-radius:10px;
+    margin-bottom:12px;
+}
+
+.image-box button{
+    padding:12px 20px;
+    border:0;
+    border-radius:10px;
+    background:#00aaa5;
+    color:white;
+    cursor:pointer;
+}
+
+footer{
+    margin-top:50px;
+    padding:30px;
+    text-align:center;
+    background:#04111e;
+    color:#8eabb6;
+}
+
+@media(max-width:650px){
+    .hero h1{
+        font-size:32px;
     }
 
-    .logo {
-        font-size: 17px;
+    nav{
+        display:none;
     }
 
-    .login {
-        padding: 9px 11px;
-        font-size: 12px;
+    .search{
+        flex-direction:column;
+        gap:8px;
     }
 
-    .card {
-        padding: 20px;
+    .search input,
+    .search button{
+        border-radius:10px;
+        padding:15px;
     }
 }
 </style>
@@ -218,207 +296,350 @@ footer {
 
 <header>
 
-    <div class="logo">
-        <div class="block"></div>
-        AGOSHMC
-    </div>
+<div class="logo">
+🌐 Bilim<span>TM</span>
+</div>
 
-    <button class="login" onclick="googleLogin()">
-        🔐 Google bilen gir
-    </button>
+<nav>
+<button onclick="showSection('home')">Baş sahypa</button>
+<button onclick="showSection('books')">Kitaplar</button>
+<button onclick="showSection('ai')">AI</button>
+<button onclick="showSection('image')">Surat AI</button>
+</nav>
 
 </header>
 
 
-<main class="container">
+<!-- ANA SAYFA -->
 
-<section class="hero">
+<section id="home" class="section active">
 
-    <div class="flag">🇹🇲</div>
+<div class="hero">
 
-    <h1>Minecraft Domen</h1>
+<h1>Bilim<span>TM</span></h1>
 
-    <p>
-        Minecraft serweriň üçin mugt domen saýla
-        we serwer IP adresiňi giriz.
-    </p>
+<p>
+Türkmenistan üçin bilim, kitaplar, ödev kömegi we AI gurallary bir ýerde.
+</p>
 
-</section>
+<div class="search">
 
+<input id="searchInput"
+placeholder="Kitap, ders ýa-da mowzuk gözle...">
 
-<section class="card">
+<button onclick="search()">Gözle</button>
 
-    <h2>🌐 Domen döret</h2>
+</div>
 
-    <label>Domen hyzmaty</label>
-
-    <select id="provider" onchange="updatePreview()">
-
-        <option value="min3">
-            Min3.online
-        </option>
-
-        <option value="tm">
-            .tm
-        </option>
-
-    </select>
+</div>
 
 
-    <label>Domen ady</label>
+<div class="container">
 
-    <input
-        id="domain"
-        type="text"
-        placeholder="agoshmc"
-        oninput="updatePreview()"
-    >
+<h2 class="title">Näme gerek?</h2>
 
+<div class="cards">
 
-    <div class="preview" id="preview">
-        agoshmc.min3.online
-    </div>
+<div class="card" onclick="showSection('ai')">
+<div class="icon">🤖</div>
+<h3>AI Kömekçi</h3>
+<p>Öý işleriňi düşündir, sorag ber we öwren.</p>
+</div>
 
+<div class="card" onclick="showSection('books')">
+<div class="icon">📚</div>
+<h3>Kitaphana</h3>
+<p>Ders kitaplaryny we okuw materiallaryny tap.</p>
+</div>
 
-    <label>Minecraft serwer IP adresi</label>
+<div class="card">
+<div class="icon">🧮</div>
+<h3>Matematika</h3>
+<p>Matematika meselelerini çözmek üçin kömekçi.</p>
+</div>
 
-    <input
-        id="ip"
-        type="text"
-        placeholder="123.123.123.123:25565"
-    >
+<div class="card" onclick="showSection('image')">
+<div class="icon">🎨</div>
+<h3>Surat AI</h3>
+<p>Tekst arkaly surat döretmek bölümi.</p>
+</div>
 
+</div>
 
-    <button class="create" onclick="createDomain()">
-        ⛏️ Domen döret
-    </button>
+</div>
 
 </section>
 
 
-<section class="domain-list">
+<!-- KITAPLAR -->
 
-    <h2>📋 Domenlerim</h2>
+<section id="books" class="section">
 
-    <div id="list"></div>
+<div class="container">
+
+<h2 class="title">📚 Kitaphana</h2>
+
+<div class="books">
+
+<div class="book">
+<h3>📘 Matematika</h3>
+<p>Mekdep matematika materiallary</p>
+<button onclick="openBook('Matematika')">
+Aç
+</button>
+</div>
+
+<div class="book">
+<h3>📗 Türkmen dili</h3>
+<p>Türkmen dili okuw materiallary</p>
+<button onclick="openBook('Türkmen dili')">
+Aç
+</button>
+</div>
+
+<div class="book">
+<h3>📕 Fizika</h3>
+<p>Fizika dersleri</p>
+<button onclick="openBook('Fizika')">
+Aç
+</button>
+</div>
+
+<div class="book">
+<h3>📙 Himiýa</h3>
+<p>Himiýa dersleri</p>
+<button onclick="openBook('Himiýa')">
+Aç
+</button>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
-</main>
+
+<!-- AI -->
+
+<section id="ai" class="section">
+
+<div class="container">
+
+<h2 class="title">🤖 BilimTM AI</h2>
+
+<div class="ai-box">
+
+<div class="messages" id="messages">
+
+<div class="message ai">
+Salam! Men BilimTM AI. Öý işiň, dersleriň ýa-da başga soraglaryň barada kömek edip bilerin.
+</div>
+
+</div>
+
+<div class="ai-input">
+
+<input
+id="aiInput"
+placeholder="Soragyňy ýaz...">
+
+<button onclick="sendAI()">
+Iber
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RESIM AI -->
+
+<section id="image" class="section">
+
+<div class="container">
+
+<h2 class="title">🎨 Surat dörediji AI</h2>
+
+<div class="image-box">
+
+<textarea
+id="imagePrompt"
+placeholder="Döretmek isleýän suratyňy düşündir..."></textarea>
+
+<button onclick="generateImage()">
+Surat döret
+</button>
+
+<div id="imageResult" style="margin-top:20px;"></div>
+
+</div>
+
+</div>
+
+</section>
 
 
 <footer>
-    🇹🇲 AgoshMC Minecraft Domen Ulgamy
-    <br><br>
-    © 2026 AGOSHMC
+
+BilimTM © 2026  
+<br>
+Türkmenistan üçin bilim platformasy
+
 </footer>
 
 
 <script>
 
-function updatePreview() {
+function showSection(id){
 
-    let name =
-        document.getElementById("domain")
-        .value
-        .toLowerCase()
-        .replace(/[^a-z0-9-]/g, "");
+document.querySelectorAll(".section")
+.forEach(section=>{
+section.classList.remove("active");
+});
 
-    if (!name) {
-        name = "agoshmc";
-    }
+document.getElementById(id)
+.classList.add("active");
 
-    let provider =
-        document.getElementById("provider").value;
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
-    let domain;
-
-    if (provider === "min3") {
-        domain = name + ".min3.online";
-    } else {
-        domain = name + ".tm";
-    }
-
-    document.getElementById("preview").innerText =
-        domain;
 }
 
 
-function createDomain() {
+function search(){
 
-    let name =
-        document.getElementById("domain")
-        .value
-        .trim()
-        .toLowerCase()
-        .replace(/[^a-z0-9-]/g, "");
+let text=document
+.getElementById("searchInput")
+.value
+.toLowerCase();
 
-    let ip =
-        document.getElementById("ip")
-        .value
-        .trim();
+if(!text){
+alert("Gözleg üçin bir zat ýaz!");
+return;
+}
 
-    let provider =
-        document.getElementById("provider").value;
+if(text.includes("matematika")){
+showSection("books");
+alert("Matematika materiallary tapyldy.");
+}
 
-    if (!name) {
-        alert("Domen adyny giriz!");
-        return;
-    }
+else if(text.includes("fizika")){
+showSection("books");
+alert("Fizika materiallary tapyldy.");
+}
 
-    if (!ip) {
-        alert("Minecraft serwer IP adresiňi giriz!");
-        return;
-    }
+else if(text.includes("himiýa")){
+showSection("books");
+alert("Himiýa materiallary tapyldy.");
+}
 
-    let domain;
+else{
+showSection("ai");
+document.getElementById("aiInput").value=text;
+}
 
-    if (provider === "min3") {
-        domain = name + ".min3.online";
-    } else {
-        domain = name + ".tm";
-    }
-
-    let list =
-        document.getElementById("list");
-
-    let item =
-        document.createElement("div");
-
-    item.className = "domain";
-
-    item.innerHTML = `
-        <div class="domain-name">
-            ${domain}
-        </div>
-
-        <div class="domain-ip">
-            Minecraft IP: ${ip}
-        </div>
-
-        <div class="status">
-            Garaşylýar
-        </div>
-    `;
-
-    list.prepend(item);
-
-    alert(
-        "Domen goşuldy: " + domain
-    );
-
-    document.getElementById("domain").value = "";
-    document.getElementById("ip").value = "";
-
-    updatePreview();
 }
 
 
-function googleLogin() {
+function sendAI(){
 
-    alert(
-        "Google bilen giriş üçin OAuth sazlamasy gerek."
-    );
+let input=document
+.getElementById("aiInput");
+
+let text=input.value.trim();
+
+if(!text) return;
+
+let messages=document
+.getElementById("messages");
+
+messages.innerHTML += `
+<div class="message user">
+${escapeHTML(text)}
+</div>
+`;
+
+input.value="";
+
+setTimeout(()=>{
+
+messages.innerHTML += `
+<div class="message ai">
+Häzirki wagtda AI serweri birikdirilmedi.
+Bu ýere AI API birikdirilende men soraglara hakyky jogap berip bilerin.
+</div>
+`;
+
+messages.scrollTop=messages.scrollHeight;
+
+},500);
+
+}
+
+
+function openBook(name){
+
+alert(
+name +
+" kitabynyň PDF/HTML faýlyny soňra bu ýere birikdirip bolýar."
+);
+
+}
+
+
+function generateImage(){
+
+let prompt=document
+.getElementById("imagePrompt")
+.value.trim();
+
+if(!prompt){
+alert("Ilki surat düşündirişini ýaz!");
+return;
+}
+
+document.getElementById("imageResult").innerHTML=`
+
+<div style="
+padding:20px;
+background:#071a2d;
+border-radius:12px;
+">
+
+🎨 Surat AI taýýar.
+
+<br><br>
+
+<strong>Prompt:</strong><br>
+${escapeHTML(prompt)}
+
+<br><br>
+
+Surat generatory API-si birikdirilende
+bu ýerde hakyky surat görkeziler.
+
+</div>
+
+`;
+
+}
+
+
+function escapeHTML(text){
+
+return text
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
