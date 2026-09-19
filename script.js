@@ -1,201 +1,167 @@
-padding: 13px 16px;
+const aiInput = document.getElementById("aiInput");
+const chatMessages = document.getElementById("chatMessages");
 
-    border-radius: 15px;
+function addMessage(text, type) {
 
-    margin-bottom: 12px;
+    const message = document.createElement("div");
+
+    message.className =
+        type === "user"
+            ? "message user-message"
+            : "message ai-message";
+
+    message.textContent = text;
+
+    chatMessages.appendChild(message);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-.ai-message {
-    background: #102e44;
-    color: #dcebf5;
-}
 
-.user-message {
-    margin-left: auto;
+function sendAI() {
 
-    background: #19d9d2;
-    color: #03202a;
-}
+    const question = aiInput.value.trim();
 
-.suggestions {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    padding: 0 20px 15px;
-}
-
-.suggestions button {
-    background: #0d2a40;
-
-    border: 1px solid #1a455d;
-
-    color: #a9dce0;
-
-    padding: 8px 12px;
-
-    border-radius: 20px;
-
-    cursor: pointer;
-}
-
-.chat-input {
-    display: flex;
-
-    gap: 10px;
-
-    padding: 18px;
-
-    border-top: 1px solid #143d54;
-}
-
-.chat-input button {
-    width: 55px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    background: #19d9d2;
-
-    color: #03202a;
-
-    font-size: 20px;
-
-    cursor: pointer;
-}
-
-.about {
-    text-align: center;
-}
-
-.features {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(200px, 1fr));
-
-    gap: 20px;
-
-    max-width: 900px;
-
-    margin: auto;
-}
-
-.features div {
-    background: #0a2033;
-
-    border: 1px solid #12384e;
-
-    padding: 30px;
-
-    border-radius: 18px;
-}
-
-.features span {
-    font-size: 35px;
-}
-
-.features p {
-    color: #91a8ba;
-    margin-top: 8px;
-}
-
-footer {
-    padding: 35px 7%;
-
-    text-align: center;
-
-    background: #04111f;
-
-    color: #71899b;
-}
-
-.footer-logo {
-    color: white;
-
-    font-size: 25px;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
-}
-
-.modal {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 2000;
-
-    background: rgba(0, 0, 0, 0.75);
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-}
-
-.modal-content {
-    width: 100%;
-    max-width: 600px;
-
-    background: #0a2033;
-
-    border: 1px solid #19d9d2;
-
-    border-radius: 18px;
-
-    padding: 30px;
-
-    position: relative;
-}
-
-.close {
-    position: absolute;
-
-    right: 15px;
-    top: 10px;
-
-    background: none;
-    border: none;
-
-    color: white;
-
-    font-size: 30px;
-
-    cursor: pointer;
-}
-
-@media (max-width: 700px) {
-
-    .header {
-        flex-direction: column;
-        gap: 15px;
+    if (!question) {
+        return;
     }
 
-    nav {
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+    addMessage(question, "user");
 
-    .hero {
-        min-height: 600px;
-    }
+    aiInput.value = "";
 
-    .hero-buttons {
-        flex-direction: column;
-    }
+    setTimeout(() => {
 
-    .button {
-        text-align: center;
-    }
+        const answer = getAIAnswer(question);
 
-    .chat-messages {
-        height: 300px;
+        addMessage(answer, "ai");
+
+    }, 500);
+}
+
+
+function askQuestion(question) {
+
+    aiInput.value = question;
+
+    sendAI();
+}
+
+
+function handleEnter(event) {
+
+    if (event.key === "Enter") {
+        sendAI();
     }
 }
+
+
+function getAIAnswer(question) {
+
+    const q = question.toLowerCase();
+
+
+    if (
+        q.includes("2 + 2") ||
+        q.includes("2+2")
+    ) {
+        return "2 + 2 = 4. 🧮";
+    }
+
+
+    if (
+        q.includes("fotosintez") ||
+        q.includes("fotosintez näme")
+    ) {
+        return "Fotosintez ösümlikleriň gün şöhlesiniň kömegi bilen suw we kömürturşy gazyny ulanyp, organiki maddalary we kislorody emele getirýän prosesidir. 🌱";
+    }
+
+
+    if (
+        q.includes("fizika")
+    ) {
+        return "Fizika materiýanyň, energiýanyň we olaryň özara täsirleriniň kanunlaryny öwrenýän ylymdyr. ⚡";
+    }
+
+
+    if (
+        q.includes("salam") ||
+        q.includes("hello")
+    ) {
+        return "Salam! 👋 BilimTM-e hoş geldiň! Okuw soragyňy ýaz.";
+    }
+
+
+    if (
+        q.includes("matematika")
+    ) {
+        return "Matematika boýunça meseläni doly ýaz. Men ony ädimme-ädim düşündirmäge synanyşaryn. 📐";
+    }
+
+
+    return "Bu häzirki wagtda BilimTM-iň demo AI jogaby. 🤖 Hakyky AI modelini birikdirenimizde, soragyňa has giňişleýin jogap berip bileris.";
+}
+
+
+function openBook(bookName) {
+
+    const modal = document.getElementById("modal");
+    const content = document.getElementById("modalContent");
+
+    content.innerHTML = 
+        <h2>📚 ${bookName}</h2>
+
+        <p style="margin-top:15px;color:#9db1c0;">
+            Bu bölüme soňra ${bookName} okuw kitaby,
+            PDF faýllary, sapaklar we okuw materiallary
+            goşular.
+        </p>
+
+        <button
+            onclick="closeModal()"
+            style="
+                margin-top:25px;
+                padding:12px 20px;
+                border:0;
+                border-radius:10px;
+                background:#19d9d2;
+                cursor:pointer;
+            "
+        >
+            Ýap
+        </button>
+    ;
+
+    modal.style.display = "flex";
+}
+
+
+function closeModal() {
+
+    document.getElementById("modal").style.display = "none";
+}
+
+
+document
+    .getElementById("bookSearch")
+    .addEventListener("input", function () {
+
+        const search = this.value.toLowerCase();
+
+        const books =
+            document.querySelectorAll(".book-card");
+
+        books.forEach(book => {
+
+            const name =
+                book.dataset.name.toLowerCase();
+
+            if (name.includes(search)) {
+                book.style.display = "";
+            } else {
+                book.style.display = "none";
+            }
+
+        });
+
+    });
