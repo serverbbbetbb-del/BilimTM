@@ -1,0 +1,745 @@
+<!DOCTYPE html><html lang="tk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGOSHMC Hosting — Mugt Minecraft Serweri</title>  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07111f;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .navbar {
+      width: 100%;
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #14243a;
+      background: rgba(7, 17, 31, 0.96);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #28d7ff;
+    }
+
+    .logo span {
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #b9c7d8;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #28d7ff;
+    }
+
+    .login {
+      border: 1px solid #24506b;
+      padding: 9px 17px;
+      border-radius: 8px;
+    }
+
+    .hero {
+      max-width: 1150px;
+      margin: auto;
+      padding: 105px 25px 80px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 50px;
+      background: #0c2638;
+      border: 1px solid #164967;
+      color: #45dcff;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: #28d7ff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #9eafc3;
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 13px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      padding: 14px 23px;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #20c9f5;
+      color: #03101a;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #55ddff;
+    }
+
+    .btn-secondary {
+      background: #101e30;
+      color: white;
+      border: 1px solid #203a54;
+    }
+
+    .btn-secondary:hover {
+      background: #172a40;
+    }
+
+    .stats {
+      max-width: 950px;
+      margin: 20px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .stat {
+      padding: 24px;
+      background: #0b1929;
+      border: 1px solid #162d45;
+      border-radius: 13px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 27px;
+      color: #35d6ff;
+    }
+
+    .stat small {
+      color: #8193a8;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 75px 25px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #8294aa;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #0b1929;
+      border: 1px solid #162d45;
+      padding: 28px;
+      border-radius: 15px;
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #8ea0b5;
+      font-size: 14px;
+    }
+
+    .server-demo {
+      background: #0b1929;
+      border: 1px solid #193650;
+      border-radius: 18px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .server-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #5de58a;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #43df79;
+      border-radius: 50%;
+    }
+
+    .server-ip {
+      margin-top: 12px;
+      padding: 13px;
+      background: #07111f;
+      border: 1px solid #183149;
+      border-radius: 8px;
+      color: #49dfff;
+      font-family: monospace;
+      display: inline-block;
+    }
+
+    .footer {
+      border-top: 1px solid #14243a;
+      padding: 35px 20px;
+      text-align: center;
+      color: #65778d;
+      font-size: 13px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 200;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 470px;
+      background: #0b1929;
+      border: 1px solid #20415c;
+      border-radius: 15px;
+      padding: 30px;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .modal-box p {
+      color: #899bb0;
+      margin-bottom: 22px;
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: #bdcada;
+      font-size: 13px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 17px;
+      border-radius: 8px;
+      border: 1px solid #23425b;
+      background: #07111f;
+      color: white;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #28d7ff;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    @media (max-width: 750px) {
+      .nav-links a:not(.login) {
+        display: none;
+      }
+
+      .stats,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .server-demo {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+    }
+  </style></head><body>  <nav class="navbar"><a href="#" class="logo">
+  AGOSH<span>MC</span>
+</a>
+
+<div class="nav-links">
+  <a href="#ayratynlyklar">Aýratynlyklar</a>
+  <a href="#serwerler">Serwerler</a>
+  <a href="#biz-barada">Biz barada</a>
+  <a href="#" class="login">Giriş</a>
+</div>
+
+  </nav>  <main><section class="hero">
+
+  <div class="badge">
+    ⚡ 100% Mugt Minecraft Hosting
+  </div>
+
+  <h1>
+    Minecraft serweriňi<br>
+    <span>mugt döred.</span>
+  </h1>
+
+  <p>
+    AGOSHMC bilen öz Minecraft serweriňi birnäçe sekuntda döred.
+    Serweriňi dolandyr, dostlaryňy çagyr we başdan geçirmeleriňe başla.
+  </p>
+
+  <div class="buttons">
+
+    <button class="btn btn-primary" id="createServer">
+      🚀 Mugt Serwer Döret
+    </button>
+
+    <a class="btn btn-secondary" href="#ayratynlyklar">
+      Aýratynlyklary Gör
+    </a>
+
+  </div>
+
+
+  <div class="stats">
+
+    <div class="stat">
+      <strong>4 GB</strong>
+      <small>Mugt RAM</small>
+    </div>
+
+    <div class="stat">
+      <strong>24/7</strong>
+      <small>Dolandyryş paneline giriş</small>
+    </div>
+
+    <div class="stat">
+      <strong>∞</strong>
+      <small>Oýunçy jemgyýeti</small>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="ayratynlyklar">
+
+  <div class="section-title">
+
+    <h2>Näme üçin AGOSHMC?</h2>
+
+    <p>
+      Minecraft serweriň üçin gerek bolan esasy gurallar.
+    </p>
+
+  </div>
+
+
+  <div class="cards">
+
+    <div class="card">
+
+      <div class="icon">🖥️</div>
+
+      <h3>Ýönekeý panel</h3>
+
+      <p>
+        Serweriňi bir dolandyryş panelinden başlat,
+        duruz we dolandyr.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">⚡</div>
+
+      <h3>Çalt gurnama</h3>
+
+      <p>
+        Serwer döretmek işini birnäçe ýönekeý ädim bilen tamamla.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">🛡️</div>
+
+      <h3>Howpsuz dolandyryş</h3>
+
+      <p>
+        Serwer sazlamalaryny we oýunçylary merkezi panelden dolandyr.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">📦</div>
+
+      <h3>Faýl dolandyryşy</h3>
+
+      <p>
+        Geljekde serwer faýllaryny dolandyryş panelinden dolandyr.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">🎮</div>
+
+      <h3>Minecraft wersiýalary</h3>
+
+      <p>
+        Goldanýan Minecraft wersiýalaryndan islänini saýla.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="icon">🌐</div>
+
+      <h3>Serwer salgysy</h3>
+
+      <p>
+        Öz domeniňi DNS arkaly Minecraft serweriňe birikdirip bilersiň.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="serwerler">
+
+  <div class="section-title">
+
+    <h2>Örnek Serwer</h2>
+
+    <p>
+      Oýunçylara görkezilip bilinjek serwer maglumatlary.
+    </p>
+
+  </div>
+
+
+  <div class="server-demo">
+
+    <div>
+
+      <div class="server-status">
+        <span class="dot"></span>
+        Onlaýn
+      </div>
+
+      <h3>
+        AGOSHMC Survival
+      </h3>
+
+      <div class="server-ip">
+        oyna.agoshmc.tm
+      </div>
+
+    </div>
+
+
+    <button class="btn btn-primary" id="copyIp">
+      IP-ni göçür
+    </button>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="biz-barada">
+
+  <div class="section-title">
+
+    <h2>AGOSHMC Hosting</h2>
+
+    <p>
+      Mugt Minecraft serwerlerini dolandyrmak üçin platforma.
+    </p>
+
+  </div>
+
+</section>
+
+  </main>  <footer class="footer">© 2026 AGOSHMC Hosting — Minecraft serwer platformasy
+
+  </footer>  <div class="modal" id="serverModal"><div class="modal-box">
+
+  <h2>Serweriňi döret</h2>
+
+  <p>
+    Aşakdaky forma arkaly serweriň üçin sazlamalary saýla.
+  </p>
+
+
+  <form id="serverForm">
+
+    <label for="serverName">
+      Serweriň ady
+    </label>
+
+    <input
+      id="serverName"
+      type="text"
+      placeholder="Mysal: AGOSHMC Survival"
+      required
+    >
+
+
+    <label for="version">
+      Minecraft wersiýasy
+    </label>
+
+    <select id="version">
+
+      <option>1.16.5</option>
+      <option>1.20.1</option>
+      <option>1.21.1</option>
+      <option>1.21.8</option>
+
+    </select>
+
+
+    <label for="ram">
+      RAM
+    </label>
+
+    <select id="ram">
+
+      <option>2 GB</option>
+      <option>4 GB</option>
+
+    </select>
+
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        id="closeModal"
+      >
+        Ýatyr
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+      >
+        Serweri döret
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
+
+  </div>  <script>
+
+    const createServer =
+      document.getElementById("createServer");
+
+    const serverModal =
+      document.getElementById("serverModal");
+
+    const closeModal =
+      document.getElementById("closeModal");
+
+    const serverForm =
+      document.getElementById("serverForm");
+
+    const copyIp =
+      document.getElementById("copyIp");
+
+
+    createServer.addEventListener("click", function () {
+
+      serverModal.classList.add("active");
+
+    });
+
+
+    closeModal.addEventListener("click", function () {
+
+      serverModal.classList.remove("active");
+
+    });
+
+
+    serverModal.addEventListener("click", function (event) {
+
+      if (event.target === serverModal) {
+
+        serverModal.classList.remove("active");
+
+      }
+
+    });
+
+
+    serverForm.addEventListener("submit", function (event) {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("serverName").value.trim();
+
+      const version =
+        document.getElementById("version").value;
+
+      const ram =
+        document.getElementById("ram").value;
+
+
+      if (!name) {
+
+        alert("Serweriň adyny ýaz.");
+
+        return;
+
+      }
+
+
+      alert(
+        "Serwer döredildi!\\n\\n" +
+        "Serwer: " + name + "\\n" +
+        "Wersiýa: " + version + "\\n" +
+        "RAM: " + ram + "\\n\\n" +
+        "Bu häzirlikçe demo görnüşidir. " +
+        "Hakyky Minecraft serwerini döretmek üçin backend ulgamy gerek."
+      );
+
+
+      serverModal.classList.remove("active");
+
+      serverForm.reset();
+
+    });
+
+
+    copyIp.addEventListener("click", function () {
+
+      const ip = "oyna.agoshmc.tm";
+
+
+      if (navigator.clipboard) {
+
+        navigator.clipboard.writeText(ip).then(function () {
+
+          copyIp.textContent = "Göçürildi ✓";
+
+
+          setTimeout(function () {
+
+            copyIp.textContent = "IP-ni göçür";
+
+          }, 1800);
+
+        });
+
+      } else {
+
+        alert("Serwer salgysy: " + ip);
+
+      }
+
+    });
+
+  </script></body>
+</html>
